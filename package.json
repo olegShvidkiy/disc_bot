@@ -1,0 +1,23 @@
+{
+  "name": "reg_bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "dev": "nodemon .",
+    "start": "nodemon bot.js"
+  },
+  "dependencies": {
+    "@discordjs/builders": "^0.15.0",
+    "csv-writer": "^1.6.0",
+    "discord.js": "^13.8.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.6.0",
+    "eslint-plugin-jsdoc": "^37.6.1",
+    "nodemon": "^2.0.15",
+    "prettier": "2.5.1"
+  },
+  "author": "",
+  "license": "ISC"
+}
