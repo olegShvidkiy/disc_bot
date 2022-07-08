@@ -5,7 +5,8 @@
   "main": "bot.js",
   "scripts": {
     "dev": "nodemon .",
-    "start": "nodemon bot.js"
+    "start": "nodemon bot.js",
+    "pushfix": "git add . && git commit -m 'fix' && git push ssh main "
   },
   "dependencies": {
     "@discordjs/builders": "^0.15.0",
