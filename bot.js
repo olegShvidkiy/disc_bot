@@ -57,13 +57,12 @@ app.post("/reg", (req, res) => {
     console.log(req.body);
     const newReg = new Discord.MessageEmbed()
         .setColor("#7FFF00")
-        .setTitle("Новая заявка на регистрацию!")
-        .setTimestamp();
+        .setTitle("Новая заявка на регистрацию!");
     
     let description = "";
-    
+
     for(field in req.body){
-        description += field + " : " + req.body[field] + "\n";
+        description += `**${field}** : ${req.body[field]} \n`;
     };
 
     newReg.setDescription(description);
