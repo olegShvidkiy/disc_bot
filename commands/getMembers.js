@@ -8,7 +8,7 @@ module.exports = {
     
     run: async (client, message, args)=>{
 
-        if(!message.author.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return;
+        // if(!message.author.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return;
         const guild = client.guilds.cache.get(message.guildId);
 
         
@@ -74,7 +74,7 @@ module.exports = {
             .then( ()=>message.channel.send({
                 files: [{
                     attachment: './data.csv',
-                    name: 'daya.csv',
+                    name: 'data.csv',
                     description: 'A description of the file'
                 }]
             }));
