@@ -59,8 +59,6 @@ app.post("/reg", (req, res) => {
     
     bot.guilds.cache.get("991747811961999492").channels.cache.get("995003668111822849").send("hello")
     res.send("ok");
-console.log()
-
 })
 
 app.listen(port, ()=>{
