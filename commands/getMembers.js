@@ -7,6 +7,8 @@ module.exports = {
     
     
     run: async (client, message, args)=>{
+
+        if(!message.author.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return;
         const guild = client.guilds.cache.get(message.guildId);
 
         
