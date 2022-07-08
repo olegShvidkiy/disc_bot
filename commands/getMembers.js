@@ -8,6 +8,8 @@ module.exports = {
     
     run: async (client, message, args)=>{
         const guild = client.guilds.cache.get(message.guildId);
+
+        
         guild.members.fetch()
         .then(async members => {
 
