@@ -62,7 +62,7 @@ app.post("/reg", (req, res) => {
     let description = "";
 
     for(field in req.body){
-        description += `**${field}** : ${req.body[field]} \n`;
+        description += `***${field}*** : ${req.body[field]} \n`;
     };
 
     newReg.setDescription(description);
