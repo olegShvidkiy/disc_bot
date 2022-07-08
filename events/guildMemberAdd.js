@@ -10,7 +10,7 @@ module.exports = {
         .setImage(member.user.avatar)
         .setTimestamp();
 
-        member.send("Hello");
+        member.send("https://docs.google.com/forms/d/1Nl95IdjRAmtvg5Aj_Zc7Gz4mCphVd5yYRmO9C3idd_g");
 
         member.guild.channels.cache.get("994042976131104828").send({ embeds: [newMember]});
 
