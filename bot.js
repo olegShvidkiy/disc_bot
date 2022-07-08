@@ -6,7 +6,7 @@ const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const {SlashCommandBuilder} = require("@discordjs/builders");
 const bot = new Discord.Client({intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS" ]});
 let config = require("./config.json");
-const { off } = require("process");
+const { off, env } = require("process");
 bot.login(config.token);
 
 const prefix = config.commandPrefix;
@@ -45,7 +45,7 @@ bot.on("messageCreate", function(message) {
 
 const express = require("express");
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
 const cors = require('cors');
 app.use(cors());
 
