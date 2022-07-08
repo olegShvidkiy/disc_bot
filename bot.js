@@ -49,7 +49,7 @@ const port = process.env.PORT || 4000;
 const cors = require('cors');
 const bodyParser = require('body-parser')
 app.use(cors());
-app.use(bodyParser());
+app.use(bodyParser.json());
 
 app.get("/", (req, res) => console.log("hello"));
 
