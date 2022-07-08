@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const fs = require("fs");
+
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 const {SlashCommandBuilder} = require("@discordjs/builders");
@@ -41,3 +42,18 @@ bot.on("messageCreate", function(message) {
 });
 
 
+
+const express = require("express");
+const app = express();
+const port = 4000;
+const cors = require('cors');
+app.use(cors());
+
+app.get("/", (req, res) => {
+    console.log(req);
+    res.send("hello");
+});
+
+app.listen(port, ()=>{
+    console.log("working...")
+})

@@ -1,5 +1,5 @@
 {
     "token": "OTkxNzU4ODcyNDYzMjk4NjQw.GUImhj.lD0UE7bN_wRNNrg6qSb4aqZbOT-xsJF3NN40DI",
-    "guild": "991747811961999492",
-    "commandPrefix": "/"
+    "commandPrefix": "/",
+    "welcomeMessageChannel": ""
 } 
