@@ -49,7 +49,13 @@ const port = process.env.PORT || 4000;
 const cors = require('cors');
 app.use(cors());
 
-app.get("/", (req, res) => console.log(JSON.parse(req)));
+app.get("/", (req, res) => console.log("hello"));
+
+app.post("/reg", (req, res) => {
+    if(!request.body) return response.sendStatus(400);
+    console.log(req.body);
+    res.send("ok")
+})
 
 app.listen(port, ()=>{
     console.log("working...")
