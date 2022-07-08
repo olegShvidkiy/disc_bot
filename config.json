@@ -1,6 +1,7 @@
 {
     "token": "OTkxNzU4ODcyNDYzMjk4NjQw.GUImhj.lD0UE7bN_wRNNrg6qSb4aqZbOT-xsJF3NN40DI",
     "commandPrefix": "/",
-    "welcomeMessageChannel": "",
+    "welcomeMessageChannel": "994042976131104828",
+    "adminChannel" : "",
     "serverID" : "991747811961999492"
 } 

@@ -67,7 +67,7 @@ app.post("/reg", (req, res) => {
 
     newReg.setDescription(description);
     
-    bot.guilds.cache.get(config.serverID).channels.cache.get("995003668111822849").send({ embeds: [newReg]})
+    bot.guilds.cache.get(config.serverID).channels.cache.get(config.adminChannel).send({ embeds: [newReg]})
     res.send("ok"); 
 })
 
