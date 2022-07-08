@@ -55,7 +55,7 @@ app.get("/", (req, res) => console.log("hello"));
 
 app.post("/reg", (req, res) => {
     console.log(req.body, req.payload);
-    bot.guilds.get(991747811961999492).channels.cache.get("995003668111822849").send("hello")
+    bot.guilds.cache.get(991747811961999492).channels.cache.get("995003668111822849").send("hello")
     res.send("ok");
 })
 
