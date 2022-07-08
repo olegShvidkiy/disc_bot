@@ -6,7 +6,7 @@ const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const {SlashCommandBuilder} = require("@discordjs/builders");
 const bot = new Discord.Client({intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS" ]});
 let config = require("./config.json");
-const { off, env } = require("process");
+
 bot.login(config.token);
 
 const prefix = config.commandPrefix;
@@ -27,7 +27,7 @@ events.forEach( file=>{
     const eventName = file.substr(0, file.indexOf("."));
     const event = require(`./events/${eventName}`);
     bot.on(eventName, (...args) => event.run(...args));
-})
+});
     
 
 bot.on("messageCreate", function(message) {
@@ -54,9 +54,9 @@ app.use(bodyParser.json());
 app.get("/", (req, res) => console.log("hello"));
 
 app.post("/reg", (req, res) => {
-    // if(!req.body) return res.sendStatus(400);
-    console.log(req.body);
-    res.send("ok")
+    console.log(req.body, req.payload);
+    bot.guilds.get(991747811961999492).channels.cache.get("995003668111822849").send("hello")
+    res.send("ok");
 })
 
 app.listen(port, ()=>{
