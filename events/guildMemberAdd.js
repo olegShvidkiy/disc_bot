@@ -9,9 +9,11 @@ module.exports = {
         .setImage(member.user.avatar)
         .setTimestamp();
 
+        member.send("Hello");
+
         member.guild.channels.cache.get("994042976131104828").send({ embeds: [newMember]});
 
-        
+
 
     }
 }
