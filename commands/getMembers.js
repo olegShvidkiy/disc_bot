@@ -8,7 +8,7 @@ module.exports = {
     
     run: async (client, message, args)=>{
 
-        if(!message.author.roles.cache.has("995240388178751519")) return;
+        if(!message.member.roles.cache.has("995240388178751519")) return;
         const guild = client.guilds.cache.get(message.guildId);
 
         
