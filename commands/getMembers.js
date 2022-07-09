@@ -15,6 +15,7 @@ module.exports = {
         guild.members.fetch()
         .then(async members => {
 
+            
             const membersInfo = await members.map(async member=>{
                 const date = new Date(member.joinedTimestamp);
                 
