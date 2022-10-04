@@ -1,34 +1,14 @@
 const Discord = require("discord.js");
 const fs = require("fs");
-
-const createCsvWriter = require('csv-writer').createObjectCsvWriter;
-
-const {SlashCommandBuilder} = require("@discordjs/builders");
-const bot = new Discord.Client({intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS" ]});
 let config = require("./config.json");
+const prefix = config.commandPrefix;
+const bot = new Discord.Client({intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS" ]});
+require('./src/handlers/commands').init(bot);
+require('./src/handlers/events').init(bot);
 
 bot.login(config.token);
 
-const prefix = config.commandPrefix;
-
-bot.commands = new Discord.Collection();
-const commands = fs.readdirSync("./commands").filter( file =>file.endsWith(".js"));
-
-const events = fs.readdirSync("./events").filter( file =>file.endsWith(".js"));
-
-
-commands.forEach( file => {
-    const commandName = file.substr(0, file.indexOf("."));
-    const command = require(`./commands/${commandName}`);
-    bot.commands.set(commandName, command);
-});
-
-events.forEach( file=>{
-    const eventName = file.substr(0, file.indexOf("."));
-    const event = require(`./events/${eventName}`);
-    bot.on(eventName, (...args) => event.run(...args));
-});
-    
+bot.on("error", error => console.log(error))
 
 bot.on("messageCreate", function(message) {
     if(message.content.startsWith(prefix)){
@@ -36,41 +16,9 @@ bot.on("messageCreate", function(message) {
         const commandName = args.shift();
         const command = bot.commands.get(commandName);
         if(!command) return
-
+        // if(command.admin && !message.member.roles.cache.has("995240388178751519")) return;
         command.run(bot, message, args);
     }   
 });
 
-
-
-const express = require("express");
-const app = express();
-const port = process.env.PORT || 4000;
-const cors = require('cors');
-const bodyParser = require('body-parser')
-app.use(cors());
-app.use(bodyParser.json());
-
-app.get("/", (req, res) => console.log("hello"));
-
-app.post("/reg", (req, res) => {
-    console.log(req.body);
-    const newReg = new Discord.MessageEmbed()
-        .setColor("#7FFF00")
-        .setTitle("Новая заявка на регистрацию!");
-    
-    let description = "";
-
-    for(field in req.body){
-        description += `***${field}*** : ${req.body[field]} \n`;
-    };
-
-    newReg.setDescription(description);
-    
-    bot.guilds.cache.get(config.serverID).channels.cache.get(config.adminChannel).send({ embeds: [newReg]})
-    res.send("ok"); 
-})
-
-app.listen(port, ()=>{
-    console.log("working...")
-})
+module.exports = bot;
