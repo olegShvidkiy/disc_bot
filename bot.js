@@ -5,8 +5,10 @@ const prefix = config.commandPrefix;
 const bot = new Discord.Client({intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS" ]});
 require('./src/handlers/commands').init(bot);
 require('./src/handlers/events').init(bot);
+require('dotenv').config()
 
-bot.login(config.token);
+
+bot.login(process.env.TOKEN);
 
 bot.on("error", error => console.log(error))
 
