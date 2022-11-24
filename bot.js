@@ -35,6 +35,7 @@ bot.on("messageCreate", function (message) {
     }
 });
 
+
 bot.on("interactionCreate", async (interaction) => {
     if (interaction.isButton() && interaction.customId === 'button1') {
 
