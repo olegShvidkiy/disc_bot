@@ -2,9 +2,7 @@ const Discord = require("discord.js");
 const config = require("../../config.json");
 module.exports = {
     name: "guildMemberAdd",
-    run: async (member) => {
-        console.log(member)
-
+    run: async (bot, member) => {
         const newMember = new Discord.MessageEmbed()
             .setColor("#7FFF00")
             .setTitle('✅Новый пользователь! ')

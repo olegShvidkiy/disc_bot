@@ -14,7 +14,9 @@ module.exports = {
         console.log(message.member.permissions.has("ADMINISTRATOR"))
 
         const guild = client.guilds.cache.get(message.guildId);
-
+        const mem = await guild.members.fetch();
+        console.log()
+        mem.find(m => m.user.username === "Mason").send("123")
         guild.members.fetch()
             .then(async members => {
                 const membersInfo = await members.map((member) => getUserInfo(member, message));

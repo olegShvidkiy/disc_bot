@@ -3,7 +3,7 @@ const config = require("../../config.json");
 
 module.exports = {
     name: "guildMemberRemove",
-    run: async (member) => {
+    run: async (bot, member) => {
         const message = new Discord.MessageEmbed()
             .setColor("#7FFF00")
             .setTitle('Пользовтель покинул сервер')
