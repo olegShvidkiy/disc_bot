@@ -13,6 +13,7 @@ module.exports = {
         if (!message.member.permissions.has("ADMINISTRATOR") && !message.member.roles.cache.has("1006638559664545925")) return;
         console.log(message.member.permissions.has("ADMINISTRATOR"))
 
+        const guild = client.guilds.cache.get(message.guildId);
 
         guild.members.fetch()
             .then(async members => {
