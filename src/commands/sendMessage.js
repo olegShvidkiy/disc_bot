@@ -28,6 +28,7 @@ module.exports = {
             const guild = client.guilds.cache.get(message.guildId);
             const mem = await guild.members.fetch();
             const notFound = [];
+            let counter = 0;
             data.forEach(async username => {
                 let discriminator;
                 const nickname = username.includes("#") ? username.slice(0, -5) : username;
@@ -40,9 +41,11 @@ module.exports = {
                     notFound.push(username);
                     return;
                 }
+                counter++;
                 if (args[0]) user.send(args.join(" "));
             })
             if (notFound.length) writeToCSV(notFound, message);
+            message.channel.send({ content: `Cообщение отправлено ${counter} пользователям!` })
 
         } catch (e) {
             Log.error(`[COMMANDS/SendMessage] Ошибка при считывании файла: ${e}`);
