@@ -1,7 +1,7 @@
 const Discord = require("discord.js"),
     { GatewayIntentBits } = require("discord.js"),
     fs = require("fs"),
-    bot = new Discord.Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMembers] }),
+    bot = new Discord.Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMembers, GatewayIntentBits.MessageContent] }),
     ConfigUtil = require("./src/structures/ConfigUtil.js"),
     Logger = require("./src/structures/Logger.js");
 
@@ -11,7 +11,7 @@ global.Config = new ConfigUtil();
 global.Log = new Logger()
 require('dotenv').config()
 
-bot.login(process.env.TOKEN).then(async () => {
+bot.login(process.env.TOKEN_TEST).then(async () => {
     await Log.init(bot);
     Log.send("Иннициализация бота.");
     require('./src/handlers/commands').init(bot);
