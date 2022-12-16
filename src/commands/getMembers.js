@@ -1,5 +1,6 @@
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const Discord = require("discord.js");
+const { PermissionsBitField } = require('discord.js');
 
 module.exports = {
     name: "getMembers",
@@ -8,10 +9,10 @@ module.exports = {
 
     run: async (client, message, args) => {
         // console.log("PERMISSIONS", message.member.permissions.has("ADMINISTRATOR"))
-        console.log(message.member.permissions.has("ADMINISTRATOR"))
+        console.log(message.member.permissions.has(PermissionsBitField.Flags.Administrator))
         // if (!message.member.permissions.has("ADMINISTRATOR")) return;
-        if (!message.member.permissions.has("ADMINISTRATOR") && !message.member.roles.cache.has("1006638559664545925")) return;
-        console.log(message.member.permissions.has("ADMINISTRATOR"))
+        if (!message.member.permissions.has(PermissionsBitField.Flags.Administrator) && !message.member.roles.cache.has("1006638559664545925")) return;
+
 
         const guild = client.guilds.cache.get(message.guildId);
 

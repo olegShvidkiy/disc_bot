@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const Logger = require("../structures/Logger");
 const axios = require('axios');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+const { PermissionsBitField } = require('discord.js');
 
 
 
@@ -10,8 +11,8 @@ module.exports = {
     description: "Return all user nicknames and their time on server",
     admin: true,
     run: async (client, message, args) => {
-        console.log(!message.member.permissions.has("ADMINISTRATOR") && !message.member.roles.cache.has("1006638559664545925"))
-        if (!message.member.permissions.has("ADMINISTRATOR") && !message.member.roles.cache.has("1006638559664545925")) return;
+
+        if (!message.member.permissions.has(PermissionsBitField.Flags.Administrator) && !message.member.roles.cache.has("1006638559664545925")) return;
         Log.init(client);
         const file = message.attachments.first()?.url;
 
@@ -24,11 +25,11 @@ module.exports = {
             const res = await axios.get(file);
 
             const data = res.data.split("\r\n");
-            data.pop();
+            console.log(data)
+            if (data[data.length] == '') data.pop();
 
             const guild = client.guilds.cache.get(message.guildId);
             const mem = await guild.members.fetch();
-            console.log(mem)
             const notFound = [];
             let counter = 0;
             data.forEach(async username => {

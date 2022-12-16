@@ -3,7 +3,6 @@ const { ActionRowBuilder, ButtonBuilder, ModalBuilder, TextInputBuilder, TextInp
 module.exports = {
     name: "interactionCreate",
     run: async (bot, interaction) => {
-        console.log(interaction)
 
         if (interaction.isButton()) {
             const userId = interaction.user.id;

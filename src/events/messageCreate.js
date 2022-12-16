@@ -4,7 +4,6 @@ module.exports = {
     name: "messageCreate",
     once: false,
     run: async (bot, message) => {
-        console.log(message.content)
         if (message.content.startsWith(Config.commandPrefix)) {
             const args = message.content.slice(Config.commandPrefix.length).trim().split(/ +/g);
             const commandName = args.shift();
