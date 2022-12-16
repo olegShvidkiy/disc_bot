@@ -1,9 +1,11 @@
 const Discord = require("discord.js");
 const config = require("../../config.json");
+const { EmbedBuilder } = require('discord.js');
+
 module.exports = {
     name: "guildMemberAdd",
     run: async (bot, member) => {
-        const newMember = new Discord.MessageEmbed()
+        const newMember = new EmbedBuilder()
             .setColor("#7FFF00")
             .setTitle('✅Новый пользователь! ')
             .setDescription(`${member.user.tag}(${member.user}) только что присоеденился к серверу!`)
