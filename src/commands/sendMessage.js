@@ -27,6 +27,7 @@ module.exports = {
 
             const guild = client.guilds.cache.get(message.guildId);
             const mem = await guild.members.fetch();
+            console.log(mem)
             const notFound = [];
             let counter = 0;
             data.forEach(async username => {

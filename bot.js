@@ -1,15 +1,17 @@
 const Discord = require("discord.js"),
+    { GatewayIntentBits } = require("discord.js"),
     fs = require("fs"),
-    bot = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"] }),
+    bot = new Discord.Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMembers] }),
     ConfigUtil = require("./src/structures/ConfigUtil.js"),
     Logger = require("./src/structures/Logger.js");
+
 
 
 global.Config = new ConfigUtil();
 global.Log = new Logger()
 require('dotenv').config()
 
-bot.login(process.env.TOKEN).then(async () => {
+bot.login(process.env.TOKEN_TEST).then(async () => {
     await Log.init(bot);
     Log.send("Иннициализация бота.");
     require('./src/handlers/commands').init(bot);
@@ -20,16 +22,17 @@ bot.on("error", Log.error);
 bot.on("warn", Log.warn);
 
 
-// bot.on("ready", () => {
-//     // const button = new Discord.MessageButton().setCustomId('start').setLabel("Начать оплату").setStyle("SUCCESS");
-//     // const buttons = new Discord.MessageActionRow();
-//     // buttons.addComponents(button);
-//     // console.log(bot.channels.cache.get("1021866420839121008"))
-//     // bot.channels.cache.get("1051851355809128559").send({
-//     //     content: "Покупка подписки",
-//     //     components: [buttons]
-//     // })
-// })
+bot.on("ready", () => {
+    // console.log(1)
+    // const button = new Discord.MessageButton().setCustomId('start').setLabel("Начать оплату").setStyle("SUCCESS");
+    // const buttons = new Discord.MessageActionRow();
+    // buttons.addComponents(button);
+    // console.log(1)
+    // bot.channels.cache.get("1051851355809128559").send({
+    //     content: "Покупка подписки",
+    //     components: [buttons]
+    // })
+})
 
 // bot.on("interactionCreate", async (interaction) => {
 //     if (interaction.isButton() && interaction.customId === 'button1') {
