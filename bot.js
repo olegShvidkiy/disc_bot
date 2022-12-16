@@ -11,7 +11,7 @@ global.Config = new ConfigUtil();
 global.Log = new Logger()
 require('dotenv').config()
 
-bot.login(process.env.TOKEN_TEST).then(async () => {
+bot.login(process.env.TOKEN).then(async () => {
     await Log.init(bot);
     Log.send("Иннициализация бота.");
     require('./src/handlers/commands').init(bot);
