@@ -6,10 +6,11 @@ const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 
 module.exports = {
-    name: "getMembers",
+    name: "sendMessage",
     description: "Return all user nicknames and their time on server",
     admin: true,
     run: async (client, message, args) => {
+        console.log(!message.member.permissions.has("ADMINISTRATOR") && !message.member.roles.cache.has("1006638559664545925"))
         if (!message.member.permissions.has("ADMINISTRATOR") && !message.member.roles.cache.has("1006638559664545925")) return;
         Log.init(client);
         const file = message.attachments.first()?.url;
